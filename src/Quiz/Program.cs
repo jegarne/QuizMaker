@@ -16,7 +16,7 @@ namespace QuizMaker
 
             // exception handling tests
             //var badMc1 = new MultipleChoiceQuestion("What am I never gonna do?", "Give you up*,Let you out*,Dessert you");
-            var badMc2 = new MultipleChoiceQuestion("What am I never gonna do?", "Give you up,Let you out,Dessert you");
+            //var badMc2 = new MultipleChoiceQuestion("What am I never gonna do?", "Give you up,Let you out,Dessert you");
 
             Quiz quiz = new Quiz();
 

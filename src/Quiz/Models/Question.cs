@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace QuizMaker.Models
 {
+    /// <summary>
+    /// Base class for QuizMaker questions
+    /// </summary>
     public abstract class Question
     {
         protected const string Alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -13,6 +16,10 @@ namespace QuizMaker.Models
         public Dictionary<string, string> Choices { get; set; } = new Dictionary<string, string>();
         public string CorrectAnswer { get; private set; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="text">the question text</param>
         public Question(string text)
         {
             this.Text = text;
@@ -23,6 +30,10 @@ namespace QuizMaker.Models
             return null;
         }
 
+        /// <summary>
+        /// Sets the answer choices
+        /// </summary>
+        /// <param name="choices">a string containing all the answer choices separated with commas - mark the correct answer with *</param>
         protected void SetChoices(string choices)
         {
             string[] choice = choices.Split(',');

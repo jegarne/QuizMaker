@@ -7,6 +7,11 @@ namespace QuizMaker.Models
 {
     public class MultipleChoiceQuestion : Question
     {
+        /// <summary>
+        /// Creates a multiple choice question
+        /// </summary>
+        /// <param name="question">the question text</param>
+        /// <param name="choices">a string containing all the answer choices separated with commas - mark one correct answer with *</param>
         public MultipleChoiceQuestion(string question, string choices) : base(question)
         {
             if (choices.Count(c => c == '*') > 1)

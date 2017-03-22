@@ -7,6 +7,11 @@ namespace QuizMaker.Models
 {
     public class TrueFalseQuestion : Question
     {
+        /// <summary>
+        /// Creates a true or false question
+        /// </summary>
+        /// <param name="question">the question text</param>
+        /// <param name="answer">a boolean value representing the correct answer</param>
         public TrueFalseQuestion(string question, bool answer) : base(question)
         {
             if (answer)
