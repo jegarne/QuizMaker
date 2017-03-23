@@ -16,19 +16,12 @@ namespace QuizMaker.Models
         public Dictionary<string, string> Choices { get; set; } = new Dictionary<string, string>();
         public string CorrectAnswer { get; private set; }
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="text">the question text</param>
         public Question(string text)
         {
             this.Text = text;
         }
 
-        public virtual string GetInstructions()
-        {
-            return null;
-        }
+        public abstract string GetInstructions(); 
 
         /// <summary>
         /// Sets the answer choices
@@ -46,9 +39,10 @@ namespace QuizMaker.Models
             }
 
             // if we got this far and don't have a correct answer yet, throw an exception
-            if(String.IsNullOrEmpty(CorrectAnswer))
+            // More on exceptions: https://msdn.microsoft.com/en-us/library/seyhszts(v=vs.110).aspx
+            if (String.IsNullOrEmpty(CorrectAnswer))
             {
-                throw new Exception("You did not provide a correct answer.  Please mark the correct answer with an apostrophe.");
+                throw new ArgumentException("You did not provide a correct answer.  Please mark the correct answer with an apostrophe.");
             }
         }
 
@@ -58,6 +52,7 @@ namespace QuizMaker.Models
             {
                 choice = choice.Replace("*", "");
                 //if there is already a correct answer, append a comma and the next correct answer
+                //Ternary operator: https://msdn.microsoft.com/en-us/library/zakwfxx4(v=vs.100).aspx
                 CorrectAnswer += String.IsNullOrEmpty(CorrectAnswer) ? choice : "," + choice;
             }
             return choice;

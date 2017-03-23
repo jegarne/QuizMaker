@@ -24,9 +24,32 @@ namespace QuizMaker
             quiz.Questions.Add(2, mc);
             quiz.Questions.Add(3, cb);
 
-            quiz.TakeQuiz();
 
-            quiz.GradeQuiz();
+            foreach (var question in quiz.Questions)
+            {
+                Console.WriteLine($"{question.Key.ToString()}. {question.Value.Text}");
+
+                foreach (var choice in question.Value.Choices)
+                {
+                    Console.WriteLine($"{choice.Key}. {choice.Value}");
+                }
+                Console.WriteLine("");
+
+                Console.WriteLine(question.Value.GetInstructions());
+
+                var answer = Console.ReadLine();
+                quiz.SetUserAnswer(question.Key, answer);
+
+                Console.WriteLine("");
+            }
+
+
+            var results = quiz.GetResults();
+            foreach (var result in results)
+            {
+                Console.WriteLine(result);
+            }
+
 
             Console.ReadLine();
         }
